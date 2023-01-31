@@ -48,5 +48,5 @@ function changeAbout(){
 }
 
 function getImageUrl(theme, id){
-    return (`url(/images/website_images/${theme}/${id}.png`)
+    return (`url(/art/images/website_images/${theme}/${id}.png`)
 }
