@@ -1,52 +1,54 @@
 var doc = document;
+const pictures = doc.getElementsByClassName('picture');
+const toggle = doc.getElementById('toggle');
 
-// var toggle = doc.getElementById('toggle');
+// on open, setting themes
 
-var toggle = doc.getElementById('toggle');
-console.log(toggle);
+let openTheme = localStorage.getItem('theme');
+
+// three possibilities on open
+switch(openTheme) {
+    default: // 'null'
+    case 'architecture':
+        toggle.checked = false;
+        setToTheme('architecture');                
+        break;
+    
+    case 'plants':
+        toggle.transition = 0; // dunno if this works!!
+        toggle.checked = true;
+        setToTheme(openTheme);                
+}
+
+function setToTheme(theme) {
+    for (let pic of pictures) {
+        let picID = pic.id;
+        let picURL = getImageUrl(theme, picID);
+        pic.style.backgroundImage = picURL;
+    };
+    localStorage.setItem('theme',theme);
+}
+
+
+// changing themes
+
 toggle.addEventListener('click', changeTheme);
 
+function changeTheme() {
+    let currentTheme = localStorage.getItem('theme');
+    switch(currentTheme) {
+        default: // 'null'
+        case 'architecture':
+            setToTheme('plants');
+            break;
 
-function changeTheme(){
-    var pictures = doc.getElementsByClassName('picture');
-        for (let picture of pictures) {
-            if (picture.classList.contains('plants')) {
-                switchToArchitecture(picture);
-            } 
-            else if (picture.classList.contains('architecture')) {
-                switchToPlants(picture);
-            }
-            switchImg(picture)
-        }
+        case 'plants':
+            setToTheme('architecture');
+            break;
+    }
 }
 
-button = doc.getElementById('button1');
-button.addEventListener('click', changeAbout);
-
-function switchToPlants(pic) {
-    pic.classList.remove('architecture');
-    pic.classList.add('plants');
-}
-
-
-function switchToArchitecture(pic) {
-    pic.classList.remove('plants');
-    pic.classList.add('architecture');
-}
-
-function switchImg(pic) {
-    let picTheme = pic.classList[1];
-    let picID = pic.id;
-    let picURL = getImageUrl(picTheme, picID)
-    pic.style.backgroundImage=picURL
-}
-
-function changeAbout(){
-    console.log('about clicked');
-    var aboutpicture = doc.getElementById('about');
-    aboutpicture.style.backgroundImage='url(/images/website_images/house1.png)';
-}
 
 function getImageUrl(theme, id){
-    return (`url(/art/images/website_images/${theme}/${id}.png`)
+    return (`url(/images/website_images/${theme}/${id}.png)`);
 }
