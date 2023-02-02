@@ -1,5 +1,8 @@
 *{
     font-family: Arial, Helvetica, sans-serif;
+    margin: none;
+    padding: none;
+    border: none;
 }
 
 clr{
@@ -54,6 +57,15 @@ input:checked::after{
     left: 70%;
 }
 
+.toggle{
+    text-align: center;
+    line-height: normal;
+}
+
+nav ul{
+    text-align: center;
+}
+
 nav li{
     list-style: none;
     display: inline-block;
@@ -66,7 +78,7 @@ nav li{
     width: fit-content;
 
     /* text */
-    text-align: center;
+    
     line-height: 5em;
 }
 
@@ -74,17 +86,3 @@ nav li a{
     text-decoration: none;
 }
 
-
-
-/*DEFAULT IMAGES*/
-#header{background-image: url('/art/images/website_images/architecture/header.png');}
-
-#about{background-image: url('/art/images/website_images/architecture/about.png')}
-
-#months{background-image: url('/art/images/website_images/architecture/months.png')}
-
-#pre-2023{background-image: url('/art/images/website_images/architecture/pre-2023.png')}
-
-#orders{background-image: url('/art/images/website_images/architecture/orders.png')}
-
-#gallery{background-image: url('/art/images/website_images/architecture/gallery.png')}
